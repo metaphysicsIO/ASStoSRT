@@ -1,4 +1,4 @@
-# ASS2SRT
+# ASS to SRT
 
 Advanced SubStation Alpha (ASS/SSA) doesn't work well on minidlna
 and I need something to convert them to SRT files.
