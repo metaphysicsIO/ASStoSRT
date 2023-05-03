@@ -8,7 +8,7 @@ srt=`echo $input | sed "s/ass/srt/"`
 echo 1 `grep "Dialogue:" "$input" | wc -l` | sed "s/^/seq /" | sh | sed "s/$/\n\n\n/" > 01-NUMBERING.txt
 
 # Timing
-grep "Dialogue:" "$input" | sed "s/Dialogue: 0,//" | sed "s/.Style.*.//" | sed "s/,/ --> /" | sed "s/\./,/g" | sed "s/$/\n\n\n/" | sed "1s/^/\n/" > 02-TIMING.txt
+grep "Dialogue:" "$input" | sed "s/Dialogue: 0,/0/" | sed "s/.Style.*.//" | sed "s/,/0 --> 0/" | sed "s/\./,/g" | sed "s/$/0/" | sed "s/$/\n\n\n/" | sed "1s/^/\n/" > 02-TIMING.txt
 
 # Get the text.. I think this will work.
 grep "Dialogue:" "$input" | sed "s/.*.0000..//" | sed "s/$/\n\n\n/" | sed "1s/^/\n\n/" | sed "s/\r//" > 03-DIALOG.txt
