@@ -5,17 +5,17 @@ srt=`echo $input | sed "s/ass/srt/"`
 
 
 # Get numbering
-echo 1 `grep "Dialogue:" "$input" | wc -l` | sed "s/^/seq /" | sh |
+echo 1 `grep -a "Dialogue:" "$input" | wc -l` | sed "s/^/seq /" | sh |
 sed "s/  //g" | sed "s/$/\n\n\n/" > 01-NUMBERING.txt
 
 # Timing
-grep "Dialogue:" "$input" | sed "s/,/[REMOVE0]/1"  | sed "s/,/[REMOVE1]/2" |
+grep -a "Dialogue:" "$input" | sed "s/,/[REMOVE0]/1"  | sed "s/,/[REMOVE1]/2" |
 sed "s/.*.\[REMOVE0\]//" | sed "s/\[REMOVE1\].*.//" | sed "s/,/0 --> 0/" |
 sed "s/\./,/g" | sed "s/$/0/" | sed "s/$/\n\n\n/" | sed "1s/^/\n/" > 02-TIMING.txt
 
 
 # Get the text.. I think this will work.
-grep "Dialogue:" "$input" | sed "s/,/[REMOVE]/9" | sed "s/.*.\[REMOVE\]//" |
+grep -a "Dialogue:" "$input" | sed "s/,/[REMOVE]/9" | sed "s/.*.\[REMOVE\]//" |
 sed "s/$/\n\n\n/" | sed "1s/^/\n\n/" | sed "s/\r//" > 03-DIALOG.txt
 
 # Formatting issues:
